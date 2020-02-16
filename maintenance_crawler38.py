@@ -15,14 +15,6 @@ def crawler(url):
 
     return content
 
-def remove_extra(text):
-    """Removes characters not contained in keep."""
-    keep = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖabcdefghijklmnopqrstuvwxyzåäö%&.#@ '
-    text = ''.join(list(filter(lambda x: x in keep, text)))
-    text = re.sub(' +', ' ', text)
-
-    return text
-
 class HTMLStripper(HTMLParser):
     """From: https://www.semicolonworld.com/question/43039/strip-html-from-strings-in-python
     Strips HTML from text.
@@ -48,6 +40,14 @@ class HTMLStripper(HTMLParser):
 
     def get_content(self):
         return ''.join(self.fed)
+
+def remove_extra(text):
+    """Removes characters not contained in keep."""
+    keep = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖabcdefghijklmnopqrstuvwxyzåäö%&.€#@ '
+    text = ''.join(list(filter(lambda x: x in keep, text)))
+    text = re.sub(' +', ' ', text)
+
+    return text
 
 def strip_html(html):
     """Remove HTML elements from content."""
