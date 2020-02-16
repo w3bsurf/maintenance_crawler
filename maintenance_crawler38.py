@@ -90,7 +90,7 @@ def word_counter(text, category=''):
     result = []
 
     if category == 'words':
-    	textlist = text.split(' ')
+    	textlist = re.split('\s|\n', text)
     	textlist = list(filter(None, textlist))
     elif category == 'sentences':
         textlist = re.split('\n|[.]', text)
